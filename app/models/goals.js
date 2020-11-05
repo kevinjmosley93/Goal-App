@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const goalSchema = new mongoose.Schema(
   {
     date: {
-      type: String,
+      type: Date,
       required: true,
     },
     title: {
@@ -11,7 +11,7 @@ const goalSchema = new mongoose.Schema(
       required: true,
     },
     finishBy: {
-      type: String,
+      type: Date,
       required: true,
     },
     goalText: {
@@ -32,4 +32,4 @@ const goalSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("goal", goalSchema);
+module.exports = mongoose.model("Goal", goalSchema);
