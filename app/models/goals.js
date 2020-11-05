@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const goalSchema = new mongoose.Schema(
   {
     date: {
-      type: Date,
+      type: String,
       required: true,
     },
     title: {
@@ -11,7 +11,7 @@ const goalSchema = new mongoose.Schema(
       required: true,
     },
     finishBy: {
-      type: Date,
+      type: String,
       required: true,
     },
     goalText: {
