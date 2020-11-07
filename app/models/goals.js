@@ -25,6 +25,7 @@ const goalSchema = new mongoose.Schema(
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
   },
   {
@@ -32,4 +33,4 @@ const goalSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("goal", goalSchema);
+module.exports = mongoose.model("Goal", goalSchema);
