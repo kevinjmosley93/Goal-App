@@ -37,7 +37,6 @@ router.post("/goals", requireToken, (req, res, next) => {
   req.body.goal.owner = req.user.id;
   const goalData = req.body.goal;
 
-  console.log("Goal data is:", goalData);
   Goal.create(goalData)
     .then((goal) => res.status(201).json({ goal }))
     .catch(next);
@@ -55,7 +54,6 @@ router.patch("/goals/:id", requireToken, removeBlanks, (req, res, next) => {
       // pass the `req` object and the Mongoose record to `requireOwnership`
       // it will throw an error if the current user isn't the owner
       requireOwnership(req, goal);
-      console.log("routes goal:", goal);
 
       // pass the result of Mongoose's `.update` to the next `.then`
       return goal.updateOne(req.body.goal);
@@ -67,11 +65,10 @@ router.patch("/goals/:id", requireToken, removeBlanks, (req, res, next) => {
 });
 
 //Delete Goal
-router.delete("/goals/:id", (req, res, next) => {
+router.delete("/goals/:id", requireToken, (req, res, next) => {
   Goal.findById(req.params.id)
     .then(handle404)
     .then((goal) => {
-      requireOwnership(req, goal);
       goal.deleteOne();
     })
     .then(() => res.sendStatus(204))
