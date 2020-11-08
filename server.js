@@ -71,9 +71,6 @@ app.use(exampleRoutes);
 app.use(userRoutes);
 app.use(goalRoutes);
 
-app.get("/", (req, res) => {
-  res.send("Routes are working!!");
-});
 // register error handling middleware
 // note that this comes after the route middlewares, because it needs to be
 // passed any error messages from them
