@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const goalSchema = require("./goals");
 
 const userSchema = new mongoose.Schema(
   {
